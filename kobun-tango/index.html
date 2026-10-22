@@ -425,6 +425,126 @@ mark { background: color-mix(in srgb, var(--seal) 24%, transparent); color: inhe
 @media (prefers-reduced-motion: reduce) {
   .entry summary::after { transition: none; }
 }
+
+/* ドット調: 角丸なし・欠け角の枠・市松の帯・段差のあるボタン（配色は和風のまま） */
+:root { --dot: #d9d0bc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dot: #1f232a; } }
+:root[data-theme="dark"] { --dot: #1f232a; }
+body { background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0); background-size: 8px 8px; }
+::selection { background: var(--seal); color: var(--seal-fg); }
+
+.wave {
+  height: 32px;
+  background-color: var(--wave-a);
+  background-image: conic-gradient(var(--wave-b) 25%, transparent 0 50%, var(--wave-b) 0 75%, transparent 0);
+  background-size: 16px 16px;
+  border-bottom: 2px solid var(--fg);
+  box-shadow: 0 6px 0 var(--seal);
+  margin-bottom: 6px;
+}
+.seal {
+  border-radius: 0;
+  transform: none;
+  margin: 3px;
+  box-shadow: 0 -3px 0 var(--seal), 0 3px 0 var(--seal), -3px 0 0 var(--seal), 3px 0 0 var(--seal);
+}
+.searchbar input {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 -2px 0 var(--fg), 0 2px 0 var(--fg), -2px 0 0 var(--fg), 2px 0 0 var(--fg);
+}
+.chip {
+  border: 0;
+  border-radius: 0;
+  margin: 2px;
+  box-shadow: 0 -2px 0 var(--line), 0 2px 0 var(--line), -2px 0 0 var(--line), 2px 0 0 var(--line);
+}
+.chip[aria-pressed="true"] {
+  box-shadow: 0 -2px 0 var(--accent), 0 2px 0 var(--accent), -2px 0 0 var(--accent), 2px 0 0 var(--accent);
+}
+.list, .wlist, .qcard {
+  border: 0;
+  border-radius: 0;
+  margin: 2px;
+  overflow: visible;
+  box-shadow: 0 -2px 0 var(--fg), 0 2px 0 var(--fg), -2px 0 0 var(--fg), 2px 0 0 var(--fg);
+}
+.wlist { margin-block: 10px 16px; }
+.entry { border-top: 2px dotted var(--line); }
+.entry:first-child { border-top: 0; }
+.wlist li { border-top: 2px dotted var(--line); }
+.wlist li:first-child { border-top: 0; }
+.entry summary::after {
+  border: 0;
+  width: 12px;
+  height: 6px;
+  bottom: 20px;
+  background: var(--muted);
+  transform: none;
+  transition: none;
+  clip-path: polygon(0 0, 100% 0, 100% 33.3%, 83.3% 33.3%, 83.3% 66.6%, 66.6% 66.6%, 66.6% 100%, 33.3% 100%, 33.3% 66.6%, 16.7% 66.6%, 16.7% 33.3%, 0 33.3%);
+}
+.entry[open] summary::after { transform: rotate(180deg); bottom: 20px; }
+.pos {
+  border: 0;
+  border-radius: 0;
+  margin: 1px;
+  box-shadow: 0 -1px 0 var(--pc), 0 1px 0 var(--pc), -1px 0 0 var(--pc), 1px 0 0 var(--pc);
+}
+.lv { border: 0; border-radius: 0; margin: 1px; }
+.lv1 { box-shadow: 0 -1px 0 var(--seal), 0 1px 0 var(--seal), -1px 0 0 var(--seal), 1px 0 0 var(--seal); }
+.lv2 { box-shadow: 0 -1px 0 var(--muted), 0 1px 0 var(--muted), -1px 0 0 var(--muted), 1px 0 0 var(--muted); }
+.lv3 { box-shadow: 0 -1px 0 var(--line), 0 1px 0 var(--line), -1px 0 0 var(--line), 1px 0 0 var(--line); }
+.known .word::after {
+  border: 0;
+  border-radius: 0;
+  margin-left: 12px;
+  box-shadow: 0 -1px 0 var(--pc-v), 0 1px 0 var(--pc-v), -1px 0 0 var(--pc-v), 1px 0 0 var(--pc-v);
+}
+.grp::before { transform: none; width: 8px; height: 8px; }
+.grp::after { height: 0; background: none; border-top: 2px dotted var(--line); }
+.known-btn, .subbtn {
+  border: 0;
+  border-radius: 0;
+  margin: 2px;
+  box-shadow: 0 -2px 0 var(--accent), 0 2px 0 var(--accent), -2px 0 0 var(--accent), 2px 0 0 var(--accent);
+}
+.startbtn {
+  border-radius: 0;
+  margin-bottom: 6px;
+  box-shadow: 0 -2px 0 var(--seal), -2px 0 0 var(--seal), 2px 0 0 var(--seal), 0 6px 0 var(--fg);
+}
+.startbtn:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 -2px 0 var(--seal), -2px 0 0 var(--seal), 2px 0 0 var(--seal), 0 2px 0 var(--fg);
+}
+.tabs { border-bottom: 2px solid var(--fg); }
+.tab {
+  border: 0;
+  border-radius: 0;
+  margin: 2px 2px 0;
+  box-shadow: 0 -2px 0 var(--line), -2px 0 0 var(--line), 2px 0 0 var(--line);
+}
+.tab[aria-selected="true"] { box-shadow: 0 -2px 0 var(--fg), -2px 0 0 var(--fg), 2px 0 0 var(--fg); }
+.choice {
+  border: 0;
+  border-radius: 0;
+  margin: 2px;
+  width: calc(100% - 4px);
+  box-shadow: 0 -2px 0 var(--line), 0 2px 0 var(--line), -2px 0 0 var(--line), 2px 0 0 var(--line);
+}
+.choice:hover:not(:disabled) { box-shadow: 0 -2px 0 var(--accent), 0 2px 0 var(--accent), -2px 0 0 var(--accent), 2px 0 0 var(--accent); }
+.choice.ok { box-shadow: 0 -2px 0 var(--pc-v), 0 2px 0 var(--pc-v), -2px 0 0 var(--pc-v), 2px 0 0 var(--pc-v); }
+.choice.ng { box-shadow: 0 -2px 0 var(--seal), 0 2px 0 var(--seal), -2px 0 0 var(--seal), 2px 0 0 var(--seal); }
+.fb { border-top: 2px dotted var(--line); }
+.qbar {
+  height: 10px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 10px);
+}
+.qbar i {
+  background: repeating-linear-gradient(90deg, var(--accent) 0 8px, transparent 8px 10px);
+  transition: none;
+}
 </style>
 
 <div class="wrap">
